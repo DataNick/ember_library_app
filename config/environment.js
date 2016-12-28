@@ -1,6 +1,7 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
+
   var ENV = {
     modulePrefix: 'new-library-app',
     environment: environment,
@@ -17,10 +18,27 @@ module.exports = function(environment) {
       }
     },
 
+    firebase: {
+        apiKey: 'ENV.FIREBASE_KEY',
+        authDomain: 'new-library-app-97736.firebaseapp.com',
+        databaseURL: 'https://new-library-app-97736.firebaseio.com',
+        storageBucket: 'new-library-app-97736.appspot.com',
+      },
+
+
+      // if using ember-cli-content-security-policy
+      contentSecurityPolicy: {
+        'script-src': "'self' 'unsafe-eval' apis.google.com",
+        'frame-src': "'self' https://*.firebaseapp.com",
+        'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+      },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
     }
+
+
   };
 
   if (environment === 'development') {
@@ -47,4 +65,7 @@ module.exports = function(environment) {
   }
 
   return ENV;
+  return {
+      FIREBASE_KEY: process.env.FIREBASE_KEY
+    }
 };
