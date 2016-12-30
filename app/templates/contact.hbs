@@ -8,15 +8,15 @@
 
   <div class="form-horizontal form-group form-group-lg row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-12 col-md-offset-0">
-      {{input type="email" value=emailAddress class="form-control" placeholder="Please type your e-mail address." autofocus="autofocus"}}
+      {{input type="email" value=model.email class="form-control" placeholder="Please type your e-mail address." autofocus="autofocus"}}
     </div>
     <br><br><br>
     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-12 col-md-offset-0">
-      {{textarea type="message" value=message class="form-control" placeholder="Your message. (At least 5 characters.)" autofocus="autofocus"}}
+      {{textarea type="message" value=model.message class="form-control" placeholder="Your message. (At least 5 characters.)" autofocus="autofocus"}}
     </div>
 
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-12">
-        <button class="btn btn-primary btn-lg btn-block" disabled={{isDisabled}} {{action 'messageSent'}}>Send Message</button>
+        <button class="btn btn-primary btn-lg btn-block" {{action 'saveContact' model}} disabled={{model.isDisabled}} >Send Message</button>
     </div>
   </div>
 
