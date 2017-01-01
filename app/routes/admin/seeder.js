@@ -15,5 +15,4 @@ export default Ember.Route.extend({
     controller.set('books', model.books);
     controller.set('authors', model.authors);
   }
-
 });
