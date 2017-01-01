@@ -6,6 +6,17 @@ export default Ember.Route.extend({
     return this.store.createRecord('library');
   },
 
+  setupController: function (controller, model) {
+    this._super(controller, model);
+
+    controller.set('title', 'Create a new library');
+    controller.set('buttonLabel', 'Create');
+  },
+
+  renderTemplate() {
+    this.render('libraries/form');
+  },
+
   actions: {
 
     saveLibrary(newLibrary) {
@@ -13,8 +24,12 @@ export default Ember.Route.extend({
     },
 
     willTransition() {
-      // rollbackAttributes() removes the record from the store
-      // if the model 'isNew'
+      // let model = this.controller.get('model')
+      // // rollbackAttributes() removes the record from the store
+      // // if the model 'isNew'
+      // if (model.get('isNew')) {
+      //   model.destroyRecord();
+      // }
       this.controller.get('model').rollbackAttributes();
     }
   }
